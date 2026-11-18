@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
+<title>GoodHire · Scan</title>
+<style>
+:root{--or:#DC5928}
+html,body{margin:0;height:100%}
+body{background:radial-gradient(1400px 900px at 50% 40%,#E8693A,var(--or) 55%,#B9461C);color:#fff;font:16px/1.3 -apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;display:grid;place-items:center;text-align:center;overflow:hidden}
+.wrap{display:flex;flex-direction:column;align-items:center;gap:3vh;padding:4vh}
+.qr{background:#fff;padding:3vh;border-radius:3vh;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.qr canvas,.qr img{display:block;width:min(46vh,70vw)!important;height:min(46vh,70vw)!important}
+h1{font-size:min(9vh,11vw);font-weight:900;letter-spacing:-.03em;margin:0}
+h1 span{color:#2A1208}
+p{font-size:min(3.4vh,5vw);font-weight:700;margin:0;opacity:.95}
+.url{font-size:min(2.6vh,4vw);opacity:.85;font-weight:600}
+</style></head>
+<body><div class="wrap">
+<h1>Good<span>Hire</span></h1>
+<div class="qr" id="qr"></div>
+<p>Scan to meet your recruit.</p>
+<div class="url" id="url"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const target = new URL("./#/recruit", location.href).toString();
+document.getElementById("url").textContent = target.replace(/^https?:\/\//, "").replace(/#\/recruit$/, "");
+new QRCode(document.getElementById("qr"), { text: target, width: 600, height: 600, colorDark: "#1a1a1a", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.M });
+</script>
+</body></html>
